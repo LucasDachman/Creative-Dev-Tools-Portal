@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Lucas Dachman
+
+# THANKS
+
+    David Schaal
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5, JavaScript
+    Normalize.css, Gulp.js
