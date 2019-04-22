@@ -10,6 +10,10 @@
 		"type": "git",
 		"url": ""
 	},
+	"scripts": {
+		"build": "gulp",
+		"deploy": "scp -r ./dist/* luda3983@creative.colorado.edu:~/public_html/dev"
+	},
 	"license": "MIT",
 	"devDependencies": {
 		"@babel/core": "^7.4.3",
@@ -35,6 +39,7 @@
 	"dependencies": {
 		"acorn": "^6.1.1",
 		"babel-core": "^6.26.3",
-		"babel-preset-env": "^1.7.0"
+		"babel-preset-env": "^1.7.0",
+		"normalize.css": "^8.0.1"
 	}
 }
