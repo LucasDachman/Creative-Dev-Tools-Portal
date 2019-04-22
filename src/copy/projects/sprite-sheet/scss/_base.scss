@@ -1,0 +1,33 @@
+@import "compass/utilities/sprites";
+@import "icon/*.png";
+@include all-icon-sprites;
+
+.icons {
+  position: relative;
+  width: 95%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+
+}
+
+li {
+  list-style: none;
+  display: inline-block;
+  padding: 10px;
+
+  a {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    // transition: nb 100ms ease;
+    // transition: 
+
+    span {
+      position: absolute;
+      top: -9999em;
+      left: -9999em;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+$icon-layout:horizontal;
+@import "icon/*.png";
+@include all-icon-sprites;
+
+.icon-animation {
+	width:320px;
+	height:680px;
+    background: url("../img/icon-sf4eddec8bd.png");
+    background-size: auto 100%;
+	animation: play 1s steps(140) infinite;
+}
+
+@keyframes play {
+	100% {
+		background-position: -2048px; 
+	}
+}
