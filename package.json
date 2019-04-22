@@ -12,7 +12,7 @@
 	},
 	"scripts": {
 		"build": "gulp",
-		"deploy": "scp -r ./dist/* luda3983@creative.colorado.edu:~/public_html/dev"
+		"deploy": "gulp && scp -r ./dist/* luda3983@creative.colorado.edu:~/public_html/dev"
 	},
 	"license": "MIT",
 	"devDependencies": {
