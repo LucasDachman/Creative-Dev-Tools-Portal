@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cat-Dog-Globe</title>
+  <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+  <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+  <script src="./script.js" defer></script>
+</head>
+
+<body>
+  <a-scene>
+    <a-assets>
+      <a-asset-item id="cat-obj" src="models/cat_01_color05.obj"></a-asset-item>
+      <a-asset-item id="dog-obj" src="models/dog_kurtshaar_grey.obj"></a-asset-item>
+      <!-- <a-asset-item id="tree-obj" src="./models/cat_01_color05.obj"></a-asset-item> -->
+      <img id="catfur" src="textures/cat-texture.jpg">
+      <img id="dogfur" src="textures/dog-texture.jpg">
+    </a-assets>
+    <a-entity position='1 2 10'>
+      <a-camera />
+    </a-entity>
+
+    <a-entity
+      environment="preset: dream; skyColor: gray; ground: noise; groundTexture: walkernoise; fog: 0;   lighting: point; dressing: mushrooms; dressingAmount: 500">
+    </a-entity>
+    <a-plane static-body id='floor' position="0 0 -.2" rotation="-90 0 0" width="30" height="30" color="white"
+      material="transparent: true; opacity: .01"></a-plane>
+
+    <a-sphere dynamic-body id='cat1' obj-model="obj: #cat-obj;" src="#catfur" position="0 1.5 -3" rotation="0 1.5 0"
+      scale="0.03 0.03 0.03"></a-sphere>
+    <a-sphere dynamic-body id='dog1' obj-model="obj: #dog-obj;" src="#dogfur" position="0 1.5 -3" rotation="0 1.5 0"
+      scale="0.009 0.009 0.009"></a-sphere>
+
+    <!-- <a-sky color="lightblue"></a-sky> -->
+
+    <!-- <a-plane static-body id='floor' position="0 0 0" rotation="-90 0 0" width="30" height="30" color="white" -->
+      <!-- material="transparent: true; opacity: .5"></a-plane> -->
+    <!-- <a-box static-body position="-9.72722 4.5 9.7392" scale="1 10 30" rotation="" material="" geometry="" id="wall1"></a-box>
+    <a-box static-body position="2.84187 4.5 0" scale="1 10 30" rotation="0 90" material="" geometry="" id="wall2">
+    <a-box static-body position="15 4.5 7.30663" scale="1 10 30" rotation="" material="" geometry="" id=" wall3"></a-box>
+    <a-box static-body position="2.84187 4.5 -4.51413" scale="1 10 30" rotation="0 90" material="" geometry="" id="wall4"> -->
+    </a-box>
+  </a-scene>
+</body>
+
+</html>

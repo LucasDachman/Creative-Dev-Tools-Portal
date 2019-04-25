@@ -1,7 +1,7 @@
 {
-	"name": "project-name",
+	"name": "dev-portal",
 	"version": "0.0.1",
-	"description": "A description for your project.",
+	"description": "Dev Portal",
 	"author": {
 		"name": "Lucas Dachman",
 		"url": "http://lucasdachman.github.io"
