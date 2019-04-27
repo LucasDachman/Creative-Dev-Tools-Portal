@@ -18,26 +18,34 @@ nav {
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(4, 1fr);
   grid-gap: 4px;
-  font-family: 'Major Mono Display';
+  font-family: "Major Mono Display";
   word-break: break-all;
   font-size: 98px;
   height: 90vh;
   width: 100%;
 
-  a, a:link, a:visited {
+  a,
+  a:link,
+  a:visited {
     // border: 2px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     border-radius: 4px;
     text-decoration: none;
+    box-sizing: border-box;
     color: black;
-    transition: box-shadow 200ms ease-in;
+    border: 1px double rgba(41, 41, 41, 0);
+    transition-property: box-shadow, border;
+    transition-duration: 2s;
+    transition-timing-function: ease-out;
   }
 
-  a:hover, a:active {
+  a:hover,
+  a:active {
     // box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0) !important;
     box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.12) !important;
+    border: 12px outset rgb(255, 255, 255) !important;
   }
 }
 
