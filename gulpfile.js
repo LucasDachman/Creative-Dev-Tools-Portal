@@ -79,6 +79,7 @@ var rename = require('gulp-rename');
 var header = require('gulp-header');
 var package = require('./package.json');
 var source = require('vinyl-source-stream');
+var cache = require('gulp-cache');
 
 // Scripts
 var jshint = require('gulp-jshint');
@@ -232,6 +233,7 @@ var startServer = function (done) {
 // Reload the browser when files change
 var reloadBrowser = function (done) {
 	if (!settings.reload) return done();
+	cache.clearAll();
 	browserSync.reload();
 	done();
 };
@@ -241,7 +243,6 @@ var watchSource = function (done) {
 	watch(paths.input, series(exports.default, reloadBrowser));
 	done();
 };
-
 
 /**
  * Export Tasks

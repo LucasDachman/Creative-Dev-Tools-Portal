@@ -5670,7 +5670,7 @@ function move(svg) {
 function updatePath() {
   requestAnimationFrame(function () {
     var ps = points();
-    path.plot(ps).opacity(getScrollRatio());
+    path.plot(ps).opacity(getScrollRatio() / 3);
   });
 } // drawing
 
@@ -5693,6 +5693,10 @@ document.addEventListener('scroll', function () {
   move(_toConsumableArray(stars));
   updatePath(); // console.log(path.node.attributes[1].nodeValue);
 });
+document.addEventListener('click', function () {
+  var p = document.querySelector('#click-me');
+  p && p.parentNode.removeChild(p);
+});
 
 },{"./util":5,"svg.js":1}],4:[function(require,module,exports){
 "use strict";
@@ -5712,6 +5716,24 @@ synth.set({
     sustain: 5
   }
 });
+var bass = new Tone.Synth({
+  oscillator: {
+    type: 'sawtooth'
+  },
+  envelope: {
+    attack: 1.5,
+    sustain: 1,
+    release: 1000
+  }
+});
+var bassFilter = new Tone.Filter({
+  frequency: 800,
+  type: 'lowpass'
+});
+bass.chain(bassFilter, new Tone.Distortion({
+  distortion: 0.5
+}), new Tone.Volume(-12), Tone.Master);
+bass.detune.value = -1200;
 var filter = new Tone.Filter({
   frequency: 1000,
   type: 'lowpass',
@@ -5721,21 +5743,38 @@ var phaser = new Tone.Phaser(0.2, 2);
 phaser.set({
   wet: 0.5
 });
-synth.chain(new Tone.Volume(-36), new Tone.Vibrato(), phaser, filter, new Tone.JCReverb(), new Tone.Volume(-6), Tone.Master); // start audio
+synth.chain(new Tone.Volume(-36), new Tone.Vibrato(), phaser, filter, new Tone.JCReverb(), new Tone.Volume(-6), Tone.Master);
+var chords = [["C3", "E3", "G3", "B3", "C4", "E4", "G4", "B4"], ["A2", "C3", "E3", "G3", "A3", "C4", "E4", "G4"], ["E2", "A3", "C3", "E3", "A4", "C4"]];
+var currentChord = 0; // start audio
+// Tone.context.resume().then(() => {
+// synth.triggerAttack(["C4", "E4", "G4", "B4"]);
+// });
 
-Tone.context.resume().then(function () {
-  synth.triggerAttack(["C4", "E4", "G4", "B4"]);
-});
 document.addEventListener('scroll', function () {
   var scrollR = getScrollRatio();
-  filter.frequency.value = Math.pow(scrollR, 3) * (5000 - 100) + 100;
-
-  if (scrollR > 0.9 || scrollR < 0.1) {
-    Tone.context.resume().then(function () {
-      console.log("trigger attack");
-      synth.triggerAttack(["C4", "E4", "G4", "B4"]);
+  var nextFreq = Math.pow(scrollR, 3) * (5000 - 100) + 100;
+  filter.frequency.rampTo(nextFreq, 0.05); // if (scrollR > 0.9 || scrollR < 0.1) {
+  // Tone.context.resume().then(() => {
+  // console.log("trigger attack");
+  // synth.triggerAttack(["C4", "E4", "G4", "B4"]);
+  // });
+  // }
+});
+document.addEventListener('click', function () {
+  Tone.context.resume().then(function () {
+    console.log("trigger release", {
+      currentChord: currentChord
     });
-  }
+    synth.triggerRelease(chords[currentChord]);
+    bass.triggerRelease();
+    currentChord++;
+    if (currentChord == chords.length) currentChord = 0;
+    console.log("trigger attack", {
+      currentChord: currentChord
+    });
+    synth.triggerAttack(chords[currentChord]);
+    bass.triggerAttackRelease(chords[currentChord][0], '8n');
+  });
 });
 
 },{"./util":5,"tone":2}],5:[function(require,module,exports){

@@ -6,7 +6,24 @@ body {
   margin: 0 auto;
   width: 92%;
   max-width: 1300px;
-  font-family: "Roboto Condensed";
+  color: black;
+  height: 100vh;
+}
+
+header {
+  font-family: 'Montserrat';
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+  }
+  p {
+    font-size: 18px;
+  }
+  a {
+    font-size: 18px;
+    text-decoration: underline;
+    color: black;
+  }
 }
 
 nav {
@@ -20,8 +37,9 @@ nav {
   grid-gap: 4px;
   font-family: "Major Mono Display";
   word-break: break-all;
-  font-size: 98px;
-  height: 90vh;
+  // font-size: 98px;
+  font-size: 40px;
+  height: 75%;
   width: 100%;
 
   a,
@@ -33,6 +51,7 @@ nav {
     justify-content: center;
     border-radius: 4px;
     text-decoration: none;
+    text-align: center;
     box-sizing: border-box;
     color: black;
     border: 1px double rgba(41, 41, 41, 0);
@@ -45,7 +64,8 @@ nav {
   a:active {
     // box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0) !important;
     box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.12) !important;
-    border: 12px outset rgb(255, 255, 255) !important;
+    border: 12px hidden rgb(255, 255, 255) !important;
+    // border: 12px outset rgb(255, 255, 255) !important;
   }
 }
 
@@ -88,7 +108,13 @@ nav {
 #parallax-music {
   box-shadow: 0px 0px 50px 31px rgba(126, 66, 13, 0.22);
   grid-row: 4;
-  grid-column: 1 / 13;
+  grid-column: 1 / 7;
+}
+
+#cat-dog {
+  box-shadow: 0px 0px 50px 31px rgba(42, 103, 11, 0.22);
+  grid-row: 4;
+  grid-column: 7 / 13;
 }
 
 input,

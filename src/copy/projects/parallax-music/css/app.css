@@ -391,3 +391,13 @@ button {
   height: 100%;
   width: 100%;
 }
+
+/* line 38, src/sass/components/_base.scss */
+p {
+  font-size: 28px;
+  font-family: 'Montserrat';
+  color: white;
+  position: fixed;
+  top: 48%;
+  left: 48%;
+}
