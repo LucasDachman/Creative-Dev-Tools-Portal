@@ -452,17 +452,23 @@ textarea {
   background-position: -4320px 0;
 }
 
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .icon-animation {
-  width: 320px;
-  height: 680px;
-  background: url("../img/icon-sf4eddec8bd.png");
+  width: 450px;
+  height: 800px;
+  background: url("../img/icon-sf4eddec8bd.png") left center;
   background-size: auto 100%;
-  animation: play 1s steps(140) infinite;
+  animation: play 600ms steps(7) infinite;
 }
 
 @keyframes play {
   100% {
-    background-position: -2048px;
+    background-position: -3150px;
   }
 }
 /*
